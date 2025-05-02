@@ -9,7 +9,7 @@ Well, it's a game, and I use that term EXTREMELY loosely. It's incomplete, and i
 The exact date this was written has been lost to time, but it had to be sometime around 2013 if I had to guess. At this point in time, I was just entering college to pursue a degree in computer science, and had been introduced to Python via a class titled "Introduction to Programming Logic." A glance through the code quickly reveals a snapshot of my programming prowess at that time:
 
 1. The code is around 870 lines long.
-2. It contains 3 function definitions.
+2. It contains 8 function definitions.
 3. It imports three standard libraries.
 4. Every single variable is declared in the global namespace.
 5. It contains zero class definitions.
