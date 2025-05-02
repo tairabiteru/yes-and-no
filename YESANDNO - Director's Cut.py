@@ -172,6 +172,10 @@ if devmode == "y":
         error()
     # Hey, 19 year old me: ever heard of fucking type casting?
 
+"""
+Excellent example of game design here, damned if you do, damned
+if you don't. No skill involved at all, just 100% luck.
+"""
 i = raw_input("Light the torch? (y/n): ")
 if i == "y" and r == 1:
     print ""
@@ -218,6 +222,7 @@ elif i == "n":
             print "...AND THEN YOU DIED."
             progexit()
         elif i == "fine" and r == 1:
+            # Hey bud, ever hear of DRY?
             print ""
             print "The second you spark your lighter you're engulfed in flames."
             print "I guess there might've been gas in the cave."
@@ -233,6 +238,12 @@ elif i == "n":
         error()
 else:
     error()
+
+
+"""
+Lord, god forbid we have some kind of function or something that handles
+output. Nah, we'll just write sleep(2) 700 times.
+"""
 print ""         
 print "Suddenly the cave is illuminated completely, and the newfound light seems to hurt your eyes a bit."
 sleep(2)
@@ -523,6 +534,7 @@ elif i == "2":
     print "Will you eat them?"
     i = raw_input("(y/n): ")
     if i == "y":
+        # Whoa, declaring variables is a little advanced, isn't it?
         raspberries = 1
         print ""
         print "You eat the berries."
@@ -544,6 +556,7 @@ elif i == "2":
         print "You decide not to eat them."
     else:
         error()
+    # Also if all I do is use it here, why don't I just use a boolean?
     if raspberries == 0:
         print ""
         print "You next come across a bush with three leaves on it's stem."
@@ -584,6 +597,10 @@ else:
     error()
 
 
+"""
+It is at this point that I started to realize that none of what I just wrote
+is sustainable in the long term, so I guess it's time to learn about functions.
+"""
 def option1():
     print ""
     print "You go back to your cave to find that it has collapsed."
@@ -626,8 +643,16 @@ def option2():
     print "..."
     sleep(2)
     print "DONE!"
+    # And learn about the concept of namespaces too,
+    # only to completely stamp all over them.
     global house_type
     house_type = "leanto"
+"""
+I remember specifically being really frustrated by the fact that I have to type
+'global' over and over in order to access house_type and thought it was stupid.
+
+AS IF WRITING sleep(2) A MILLION TIMES OVER ISN'T.
+"""
 
 def option3():
     print ""
@@ -735,6 +760,15 @@ print "Unfortunately it seems as though a storm is brewing."
 sleep(2)
 print "You stow away some wood and quickly get into your house."
 
+"""
+Oh good, more RNG that you can't do anything about. I'm also about 95% sure
+that I had no intentions of having which shelter you build affect anything at all
+other than braving the storm or not. So like...you could just always build the
+strongest one. The only downside is that you have to wait longer. Like, literally,
+the game sleeps for longer, and it's like, 30 seconds or some shit.
+
+I don't need to say it, but that's horrendously stupid.
+"""
 storm_intensity = random.randrange(1,11,1)
 
 if devmode == "y":
@@ -784,10 +818,20 @@ if house_type == "leanto" and (storm_intensity >= 3 and storm_intensity <= 5):
     sleep(2)
     print "You may have survived were it not for the fact that it was also a cool 40 degrees."
     sleep(2)
+    # 2009 called, they want their shitty meme back.
     print "DAT WINDCHILL."
     sleep(1)
     print "YOU DIED OF HYPOTHERMIA."
     progexit()
+    """
+    Also it's secondary to the programming aspect of this, but dying from
+    wind chill due to a storm that is apparently also capable of spawning
+    tornadoes doesn't make any fucking sense. I don't know what season I thought
+    it was in the context of this game, but it doesn't match any season I've
+    seen on earth, that's for sure...
+
+    ...well, okay, maybe it kind of resembles Spring in Michigan.
+    """
 elif house_type == "leanto" and (storm_intensity > 5 and storm_intensity <= 7):
     print ""
     print "The storm is pretty bad."
@@ -799,6 +843,19 @@ elif house_type == "leanto" and (storm_intensity > 5 and storm_intensity <= 7):
     print "You did NOT however manage to survive the 30 degree windchill brought by the storm."
     sleep(2)
     print "YOU DIED OF HYPOTHERMIA."
+    """
+    But ok, like, wind chill isn't even defined for temperatures above 50 degrees F.
+    So let's be conservative here and assume this storm - capable of spawning tornadoes,
+    mind you - is somehow forming at 50 F. What wind speed is required at that temperature
+    to produce wind chill values of 30 degrees F?
+
+    I don't know is the answer, but it's greater than 110 mph, because the wind chill in
+    110 mph winds at 50 F is only 36 degrees.
+
+    Like, either the game changes seasons randomly (in which case explain the presence
+    of the fucking raspberries above) or this storm is inconsistent with meteorological
+    science. Alternately, the correct answer: it's bullshit, and I thought none of this through.
+    """
     progexit()
 elif house_type == "leanto" and (storm_intensity > 8):
     print ""
@@ -929,6 +986,11 @@ elif house_type == "goodleanto" and (storm_intensity < 5):
     print "Your lean-to easily endures the storm."
     sleep(2)
 else:
+    """
+    Or you could, I don't know, write some tests to see if there is a
+    condition under which this can happen, and then omit the else statement
+    here. But nah, we'll just throw the burden onto the user.
+    """
     print "IF YOU HAVE GOTTEN THIS MESSAGE, THIS MEANS YOU'VE SOMEHOW GOTTEN THROUGH THE STORM"
     print "DETECTION MODULE. PLEASE REPORT THIS TO THE DEVELOPER IMMEDIATELY."
     print "PLEASE PRESENT THE FOLLOWING INFORMATION:"
@@ -939,6 +1001,18 @@ else:
 print ""
 print "Now that the storm has subsided, you need to decide what to do next."
 sleep(2)
+
+"""
+Yes, the storm has subsided, and what I decide to do next is quit writing
+this garbage. I have thought to myself multiple times while writing these comments,
+"I wonder if I could go back and rewrite this using the skills I have now. What would
+it look like?"
+
+Here's the thing: I don't think I will. At the end of the day, as interesting as it 
+might be, I don't think it's even worth doing. Bad code or not, the game's fundamental
+concept is bad, and it's flat out not fun to play. But at the very least,
+it's been interesting to see how much progress I've made.
+"""
 
 
 
