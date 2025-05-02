@@ -127,6 +127,12 @@ sleep(1)
 print "You can barely see anything, but luckly you have a torch."
 
 if devmode == "y":
+    """
+    Why in god's green earth do I fucking explain the inner workings of this
+    shitty program here? My guy, it abstracts a dice roll with two possible
+    outcomes, and you're basically in godmode. Why not just ask the user
+    if they want to fucking blow up?
+    """
     print ""
     print "You are in developer mode. Therefore, any random variables must be selected by you."
     print "The variable you must currently select is 'r'."
@@ -138,28 +144,33 @@ if devmode == "y":
     if r == "r":
         r = random.randrange(1,11,1)
         print r
+    # THIS IS SUCH
     elif r == "1":
         r = 1
     elif r == "2":
         r = 2
     elif r == "3":
         r = 3
+    # HOT.
     elif r == "4":
         r = 4
     elif r == "5":
         r = 5
     elif r == "6":
         r = 6
+    # FUCKING.
     elif r == "7":
         r = 7
     elif r == "8":
         r = 8
     elif r == "9":
         r = 9
+    # GARBAGE.
     elif r == "10":
         r = 10
     else:
         error()
+    # Hey, 19 year old me: ever heard of fucking type casting?
 
 i = raw_input("Light the torch? (y/n): ")
 if i == "y" and r == 1:
